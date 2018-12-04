@@ -9,11 +9,11 @@ double f(double x) {
 double solve_by_Simpson_method(point_func f, double a, double b, double step) {
 	const double n = (b - a) / step + 1;
 	double f1 = 0, f2 = 0;
-	for (int i = 1; i < n; i++) {
+	for (int i = 1; i < n + 1; i++) {
 		f1 += f(a + step * (i - 0.5));
 		f2 += f(a + step * i);
 	}
-	return step / 6 * (f(a) + f(b) + 4 * (f1 + f(b)) + 2 * (f2));
+	return step / 6 * (f(a) + f(b) + 4 * (f1) + 2 * (f2 - f(b)));
 }
 
 double solve_by_trapezoid_method(point_func f, const double & a, const double & b, double step) {
