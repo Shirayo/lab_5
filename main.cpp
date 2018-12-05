@@ -11,14 +11,12 @@ int main() {
 	double step = 0.001, eps = 0.01, n, s;
 	double integral = solve_by_trapezoid_method(f, a, b, step);
 	cout << integral << "\n\n";
-	integral = solve_by_Simpson_method(f, a, b, step);	//первое приближение для интеграла
+	integral = solve_by_Simpson_method(f, a, b, step);
 	do {
-		cout << integral << "\n\n";
-		s = integral;									//второе приближение
-		step *= 2;										//увеличение числа шагов в два раза,
-														//т.е. уменьшение значения шага в два раза
+		s = integral;									
+		step /= 2;										
 		integral = solve_by_Simpson_method(f, a, b, step);
-	} while (fabs(integral - s) > eps);					//сравнение приближений с заданной точностью
+	} while (fabs(integral - s) > eps);
 	cout << integral << "\n" << step;
 	system("pause");
 	return 0;
